@@ -40,3 +40,11 @@
 .read-the-docs {
   color: #888;
 }
+
+.article-card {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  overflow: wrap;
+  max-width: 600px;
+}
