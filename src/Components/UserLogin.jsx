@@ -1,22 +1,22 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
-function MyComponent() {
-  const navigate = useNavigate();
+// function MyComponent() {
+//   const navigate = useNavigate();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    doSomething()
-      .then(() => {
-        navigate('/somewhere/else');
-      })
-      .catch((err) => {
-        // handle error
-      });
-  }
+//   function handleSubmit(e) {
+//     e.preventDefault();
+//     doSomething()
+//       .then(() => {
+//         navigate('/somewhere/else');
+//       })
+//       .catch((err) => {
+//         // handle error
+//       });
+//   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      {/* labels, inputs and form things... */}
-    </form>
-  );
-}
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       {/* labels, inputs and form things... */}
+//     </form>
+//   );
+// }
