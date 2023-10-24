@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ArticleCard from "./ArticleCard";
+import ArticleCard from "./HomeArticleCard";
 
 
  const GetAllArticles = ({allArticles, setAllArticles}) => {
