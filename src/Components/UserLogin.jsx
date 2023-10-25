@@ -5,7 +5,7 @@ function UserProfile() {
   const { user, login, logout } = useUserContext();
 
   const handleLogin = () => {
-    login({ username: 'testUser' });
+    login({ username: "jessjelly" });
   };
 
   const handleLogout = () => {
@@ -13,7 +13,7 @@ function UserProfile() {
   };
 
   return (
-    <div>
+    <section>
       {user ? (
         <>
           <button onClick={handleLogout}>Logout</button>
@@ -21,7 +21,7 @@ function UserProfile() {
       ) : (
         <button onClick={handleLogin}>Login</button>
       )}
-    </div>
+    </section>
   );
 }
 

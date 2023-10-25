@@ -1,66 +1,69 @@
 import { useState, useEffect } from "react";
 import React from "react";
-// import { useUserContext } from "./UserContext";
+import { useUserContext } from "./UserContext";
+import axios from "axios";
 
-const AddNewComment = ({setComments, article_id }) => {
+const AddNewComment = ({
+    article_id,
+    setNewComment,
+    newComment,
+  }) => {
+    const [commentBody, setCommentBody] = useState("");
+    const { user } = useUserContext();
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [startAdding, setStartAdding] = useState(false);
+    const [commentAdded, setCommentAdded] = useState('')
+  
 
-  const [commentBody, setCommentBody] = useState("");
-//   const { user } = useUserContext();
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setStartAdding(true);
+        setNewComment(!newComment);
+      };
 
-//   console.log(user, 'user');
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-}
-
-const requestOptions = {
+  const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      body: commentBody,
-    //   username: `${user.username}`,
+      body: `${commentBody}`,
+      username: user.username,
     }),
   };
 
-    useEffect(() => {
+  useEffect(() => {
+    if (startAdding) {
       setIsLoading(true);
       fetch(
         `https://newsapp-api-project.onrender.com/api/articles/${article_id}/comments`,
         requestOptions
       )
-        .then((response) => {
-          response.json();
-        })
-        .then(({ item }) => {
-          console.log(item);
-          setComments((currComments) => {
-            console.log(currComments, "currComments");
-            return [...currComments, item];
-          });
-          setCommentBody("");
-          setError(null);
-          setIsLoading(false);
-          setError(null);
-          setIsLoading(false);
+        .then((response) => response.json())
+        .then(() => {
+          setIsLoading(false)
+          setCommentBody("")
+          setCommentAdded(`Your comment has been posted.`)
         })
         .catch((err) => {
-            setError(err);
-            setIsLoading(false);
-          });
-    }, [commentBody]);
+          setError(err);
+          setIsLoading(false);
+        });
+    }
+  }, [startAdding, article_id]);
 
-    console.log(commentBody, "comm body");
 
-    if (isLoading) return <p>Your comment is being added...</p>;
-    if (error) return <p>{error.msg}</p>;
+  if (isLoading) return <p>Your comment is being added...</p>;
+  if (error) return <p>{error.msg}</p>;
 
-    return (
+  return (
+    <>
+      {user ? (
         <>
-        {user? (
+        <p>{commentAdded}</p>
         <form className="add-comment-form" onSubmit={handleSubmit}>
           <input
+            aria-required
+            required
             id="comment-body"
             type="text"
             placeholder="type your comment here"
@@ -69,14 +72,15 @@ const requestOptions = {
               setCommentBody(event.target.value);
             }}
           />
-          {/* <p>{user.username}</p> */}
-          <button>Add Comment</button>
+          <p>Username {user.username}</p>
+          <button >Add Comment</button>
         </form>
-        ): (
-            <p>Log in to comment</p>
-        )}
         </>
-    );
-  };
+      ) : (
+        <p>Log in to comment</p>
+      )}
+    </>
+  );
+};
 
 export default AddNewComment;

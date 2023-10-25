@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ArticleCard from "./HomeArticleCard";
+import {FetchAllArticles} from '../api'
 
 
  const GetAllArticles = ({allArticles, setAllArticles}) => {
@@ -7,9 +8,7 @@ import ArticleCard from "./HomeArticleCard";
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`https://newsapp-api-project.onrender.com/api/articles`)
-            .then((response) => { 
-                return response.json()})
+        FetchAllArticles()
             .then((result) => {
                     setAllArticles(result.allArticles);
              } )
