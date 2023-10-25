@@ -85,8 +85,8 @@ if (votes === null) return <p>Votes can't be loaded</p>
     <p>{votes} votes</p> 
     { user ? (
         <>
-    <button onClick={handleClickUp}>❤️</button>
-    <button onClick={handleClickDown}>👎</button>
+    <button onClick={handleClickUp} aria-label="upvote-button">❤️</button>
+    <button onClick={handleClickDown} aria-label="downvote-button">👎</button>
     </>
     ): (
         <p>Log in to vote</p>
