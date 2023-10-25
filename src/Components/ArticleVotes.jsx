@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import React from 'react';
 import { useUserContext } from './UserContext';
+import {GetVotesByArticleId, GetUpdatedVotesByArticleId} from '../api'
 
 
 const ArticleVotes = ({article_id}) =>{
@@ -16,22 +17,21 @@ const ArticleVotes = ({article_id}) =>{
 
 const handleClickUp = (event) =>{
     event.preventDefault()
+    setVotes((currVotes)=> currVotes + 1)
     setCounterUp(counterUp === 0 ? +1 : 0)
     setChangeVoteNumber(counterUp === 0 ? 1 : 0)
 }
 
 const handleClickDown = (event) =>{
     event.preventDefault()
+    setVotes((currVotes)=> currVotes - 1)
     setCounterDown(counterDown === 0 ? 1 : 0)
     setChangeVoteNumber(counterDown === 0 ? -1 : 0)
 }
 
 useEffect(()=> {
     setIsLoading(true);
-    fetch(`https://newsapp-api-project.onrender.com/api/articles/${article_id}`)
-    .then((response)=>{
-        return response.json()
-    })
+    GetVotesByArticleId(article_id)
     .then((result)=>{
         setVotes(result.articleById.votes)
     })
@@ -47,22 +47,11 @@ useEffect(()=> {
       });
 }, [])
 
-const requestOptions = {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(
-        {"inc_votes": changeVoteNumber}
-    ),
-  };
+const requestOptions = {"inc_votes": changeVoteNumber}
 
 useEffect(()=> {
     setAddingVote(true);
-    fetch(`https://newsapp-api-project.onrender.com/api/articles/${article_id}`, 
-    requestOptions
-    )
-    .then((response)=>{
-        return response.json()
-    })
+    GetUpdatedVotesByArticleId(article_id, requestOptions)
     .then((result)=>{
         setVotes(result.updatedArticle[0].votes)
         setError(null);
