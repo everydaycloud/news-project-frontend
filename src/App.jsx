@@ -6,7 +6,7 @@ import './App.css'
 import GetAllArticles from './Components/GetAllArticles'
 import Nav from './Components/Nav'
 import ArticleById from './Components/ArticleById';
-import UserProfile from './Components/UserProfile';
+import UserProfile from './Components/UserLogin';
 
 function App() {
 

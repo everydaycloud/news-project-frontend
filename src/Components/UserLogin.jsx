@@ -1,22 +1,28 @@
-// import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useUserContext } from './UserContext';
 
-// function MyComponent() {
-//   const navigate = useNavigate();
+function UserProfile() {
+  const { user, login, logout } = useUserContext();
 
-//   function handleSubmit(e) {
-//     e.preventDefault();
-//     doSomething()
-//       .then(() => {
-//         navigate('/somewhere/else');
-//       })
-//       .catch((err) => {
-//         // handle error
-//       });
-//   }
+  const handleLogin = () => {
+    login({ username: 'testUser' });
+  };
 
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       {/* labels, inputs and form things... */}
-//     </form>
-//   );
-// }
+  const handleLogout = () => {
+    logout();
+  };
+
+  return (
+    <div>
+      {user ? (
+        <>
+          <button onClick={handleLogout}>Logout</button>
+        </>
+      ) : (
+        <button onClick={handleLogin}>Login</button>
+      )}
+    </div>
+  );
+}
+
+export default UserProfile;
