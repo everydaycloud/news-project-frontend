@@ -11,7 +11,7 @@ const Nav = () => {
     {user ? (
         <nav>
         <Link to="/">Home</Link>
-        <Link to="/articles/topic?topic="> Topics</Link>
+        <Link to="/articles/topics"> Topics</Link>
         <Link to="/user"> Profile</Link>
         <Link to="/articles/add-article"> Add Article</Link>
         <UserProfile/>
@@ -19,7 +19,7 @@ const Nav = () => {
         :
         (<nav>
         <Link to="/">Home</Link>
-        <Link to="/articles/topic?topic="> Topics</Link>
+        <Link to="/articles/topics"> Topics</Link>
         <Link to="/user/:user_id"> Profile</Link>
         <UserProfile/>
         </nav>)}
