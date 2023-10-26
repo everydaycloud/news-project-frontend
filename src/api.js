@@ -43,6 +43,11 @@ const PostNewComment = (article_id, requestOptions) => {
     .then((response)=> response.data)
 }
 
+const FetchArticlesByTopic = (chosenTopic) => {
+    return axios
+    .get(`https://newsapp-api-project.onrender.com/api/articles?topic=${chosenTopic}`)
+    .then((response)=> response.data)
+}
 
 export {GetArticleById, GetCommentsByArticleId, GetVotesByArticleId, GetUpdatedVotesByArticleId,
-    FetchAllArticles, GetAllTopics, PostNewComment }
+    FetchAllArticles, GetAllTopics, PostNewComment, FetchArticlesByTopic }

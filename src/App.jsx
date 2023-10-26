@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Route, Routes} from "react-router-dom";
 import React from 'react';
 import './App.css'
@@ -7,6 +6,8 @@ import Nav from './Components/Nav'
 import ArticleById from './Components/ArticleById';
 import UserProfile from './Components/UserLogin';
 import ArticlesByTopic from './Components/ArticlesByTopic';
+import DisplayByTopic from "./Components/ArticlesByTopic/DisplayByTopic";
+
 
 function App() {
 
@@ -16,8 +17,9 @@ function App() {
       <Routes>
         <Route path="/" element={ <GetAllArticles/>} />
         <Route path="/articles/:article_id" element={ <ArticleById />} />
-        <Route path="/articles/topics" element={<ArticlesByTopic/>}/> 
-         <Route path="/user/*" element={<UserProfile/>}>
+        <Route path="/articles/topics/" element={<ArticlesByTopic/>}/>
+        <Route path="/articles/topics/:topic" element={<DisplayByTopic/>}/>
+        <Route path="/user/*" element={<UserProfile/>}>
         </Route>
       </Routes>
      
