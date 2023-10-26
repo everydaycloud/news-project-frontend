@@ -41,7 +41,7 @@ useEffect(()=> {
     })
     .catch((error) => {
         console.error("Error fetching votes:", error);
-        setError(error);
+        setError(`The following error has occurred: ${error.message}. Functionality may be restricted.`);
         setIsLoading(false);
         setVotes(null);
       });
@@ -57,8 +57,8 @@ useEffect(()=> {
         setError(null);
         setAddingVote(false);
     })
-    .catch((err) => {
-        setError(err);
+    .catch((error) => {
+        setError(`The following error has occurred: ${error.message}. Functionality may be restricted.`);
         setIsLoading(false);
         setAddingVote(false);
       });
@@ -66,11 +66,11 @@ useEffect(()=> {
 
 if (isLoading) return <p>Loading...</p>;
 if (addingVote) return <p>Your vote is being added</p>
-if (error) return <p>{error.msg}</p>;
 if (votes === null) return <p>Votes can't be loaded</p>
 
     return (
     <>
+    <p>{error}</p>
     <p>{votes} votes</p> 
     { user ? (
         <>

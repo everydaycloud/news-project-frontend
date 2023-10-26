@@ -6,18 +6,17 @@ import GetAllArticles from './Components/GetAllArticles'
 import Nav from './Components/Nav'
 import ArticleById from './Components/ArticleById';
 import UserProfile from './Components/UserLogin';
+import ArticlesByTopic from './Components/ArticlesByTopic';
 
 function App() {
-
-  const [allArticles, setAllArticles] = useState([]);
-
 
   return (
     <>
       <Nav/>
       <Routes>
-        <Route path="/" element={ <GetAllArticles allArticles={allArticles} setAllArticles={setAllArticles}/>} />
+        <Route path="/" element={ <GetAllArticles/>} />
         <Route path="/articles/:article_id" element={ <ArticleById />} />
+        <Route path="/articles/topics" element={<ArticlesByTopic/>}/> 
          <Route path="/user/*" element={<UserProfile/>}>
         </Route>
       </Routes>
@@ -28,8 +27,4 @@ function App() {
 
 export default App
 
-        {/* <Route
-          path="/articles/topic?topic="
-          element={<ArticlesByTopic/>}
-        />  */}
         {/* <Route index element={<MyComments />} /> */}

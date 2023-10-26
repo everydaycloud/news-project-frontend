@@ -30,5 +30,19 @@ const GetUpdatedVotesByArticleId = (article_id, requestOptions) => {
     .then((response)=> response.data)
 }
 
+const GetAllTopics = () =>{
+    return axios 
+    .get(`https://newsapp-api-project.onrender.com/api/topics`)
+    .then((response)=> response.data)
+}
+
+const PostNewComment = (article_id, requestOptions) => {
+    return axios 
+    .post(`https://newsapp-api-project.onrender.com/api/articles/${article_id}/comments`, 
+    requestOptions)
+    .then((response)=> response.data)
+}
+
+
 export {GetArticleById, GetCommentsByArticleId, GetVotesByArticleId, GetUpdatedVotesByArticleId,
-    FetchAllArticles }
+    FetchAllArticles, GetAllTopics, PostNewComment }

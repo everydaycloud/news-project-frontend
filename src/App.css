@@ -48,3 +48,7 @@
   overflow: wrap;
   max-width: 600px;
 }
+
+li {
+  list-style: none;
+}

@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { useUserContext } from "./UserContext";
-import axios from "axios";
+import { PostNewComment } from "../api";
 
 const AddNewComment = ({
     article_id,
     setNewComment,
     newComment,
+    setOptimisticComment
   }) => {
     const [commentBody, setCommentBody] = useState("");
     const { user } = useUserContext();
@@ -22,24 +23,14 @@ const AddNewComment = ({
         setNewComment(!newComment);
       };
 
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      body: `${commentBody}`,
-      username: user.username,
-    }),
-  };
+  const requestOptions = {body: `${commentBody}`, username: user.username };
 
   useEffect(() => {
     if (startAdding) {
       setIsLoading(true);
-      fetch(
-        `https://newsapp-api-project.onrender.com/api/articles/${article_id}/comments`,
-        requestOptions
-      )
-        .then((response) => response.json())
-        .then(() => {
+      PostNewComment(article_id, requestOptions)
+        .then((result) => {
+          setOptimisticComment(result.newComment)
           setIsLoading(false)
           setCommentBody("")
           setCommentAdded(`Your comment has been posted.`)
