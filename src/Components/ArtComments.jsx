@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import CommentCard from "./CommentCard";
 import AddNewComment from "./AddNewComment";
 import { GetCommentsByArticleId } from "../api";
-import { AxiosError } from "axios";
+import { parseISO } from 'date-fns';
+import { format } from 'date-fns-tz'
 
 const CommentsByArticleId = ({ article_id }) => {
   const [comments, setComments] = useState([]);
@@ -36,6 +37,7 @@ const CommentsByArticleId = ({ article_id }) => {
         GetCommentsByArticleId(article_id)
         .then((result) => {
           setComments(result.commentsById);
+          setOptimisticComment([])
           setError(null)
         })
         .catch((error) => {
@@ -48,7 +50,13 @@ const CommentsByArticleId = ({ article_id }) => {
   if (!error && comments.length < 1) return <p>No comments</p>;
   return (
     <>
-      <CommentCard comments={comments} />
+    <p>{error}</p>
+    <AddNewComment
+        article_id={article_id}
+        setNewComment={setNewComment}
+        newComment={newComment}
+        setOptimisticComment={setOptimisticComment}
+      />
       <ul>
         {optimisticComment.map((comment) => {
           return (
@@ -61,13 +69,7 @@ const CommentsByArticleId = ({ article_id }) => {
           );
         })}
       </ul>
-      <p>{error}</p>
-      <AddNewComment
-        article_id={article_id}
-        setNewComment={setNewComment}
-        newComment={newComment}
-        setOptimisticComment={setOptimisticComment}
-      />
+      <CommentCard comments={comments} />
     </>
   );
 };
