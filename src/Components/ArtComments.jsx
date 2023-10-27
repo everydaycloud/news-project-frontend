@@ -10,6 +10,7 @@ const CommentsByArticleId = ({ article_id }) => {
   const [newComment, setNewComment] = useState(false);
   const [optimisticComment, setOptimisticComment] = useState([])
   const [error, setError] = useState(null)
+  const [changeComment, setChangeComment] = useState(false)
 
   function fixDateDisplay(timestamp) {
     const parsedDate = parseISO(timestamp)
@@ -39,13 +40,15 @@ const CommentsByArticleId = ({ article_id }) => {
           setComments(result.commentsById);
           setOptimisticComment([])
           setError(null)
+          setChangeComment(false)
         })
         .catch((error) => {
           console.error("Error fetching comments:", error);
           setError(`The following error has occurred: ${error.message}. Functionality may be restricted.`)
+          setChangeComment(false)
         });
     }
-  }, [newComment]);
+  }, [newComment, changeComment]);
 
   if (!error && comments.length < 1) return <p>No comments</p>;
   return (
@@ -69,7 +72,7 @@ const CommentsByArticleId = ({ article_id }) => {
           );
         })}
       </ul>
-      <CommentCard comments={comments} />
+      <CommentCard comments={comments} setChangeComment={setChangeComment} />
     </>
   );
 };

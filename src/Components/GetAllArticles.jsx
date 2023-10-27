@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ArticleCard from "./HomeArticleCard";
 import {FetchAllArticles} from '../api'
+import ArticlesByTopic from "./ArticlesByTopic";
 
 
  const GetAllArticles = () => {
@@ -26,6 +27,7 @@ import {FetchAllArticles} from '../api'
     return (
         <>
             <p>{error}</p>
+            <ArticlesByTopic/>
             <ul>
             {allArticles.map((article) => {
                 return <li key={article.article_id} className="article-card"><ArticleCard article={article} />

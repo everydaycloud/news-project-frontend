@@ -48,6 +48,11 @@ const FetchArticlesByTopic = (chosenTopic) => {
     .get(`https://newsapp-api-project.onrender.com/api/articles?topic=${chosenTopic}`)
     .then((response)=> response.data)
 }
+const DeleteSingleComment = (comment_id) => {
+    return axios
+    .delete(`https://newsapp-api-project.onrender.com/api/comments/${comment_id}`)
+    .then((response)=> response.data)
+}
 
 export {GetArticleById, GetCommentsByArticleId, GetVotesByArticleId, GetUpdatedVotesByArticleId,
-    FetchAllArticles, GetAllTopics, PostNewComment, FetchArticlesByTopic }
+    FetchAllArticles, GetAllTopics, PostNewComment, FetchArticlesByTopic, DeleteSingleComment }

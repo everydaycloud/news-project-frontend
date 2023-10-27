@@ -1,6 +1,4 @@
 import {useNavigate} from 'react-router-dom';
-import DisplayByTopic from "./DisplayByTopic"
-
 
 const TopicDropdown = ({topics, setChosenTopic, chosenTopic}) => {
 
@@ -25,7 +23,6 @@ const handleSelectChange = (e) => {
         ))}
       </select>
     </section>
-    {/* <DisplayByTopic chosenTopic={chosenTopic}/>  */}
     </>
   )
 }

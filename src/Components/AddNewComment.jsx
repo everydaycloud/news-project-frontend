@@ -23,12 +23,10 @@ const AddNewComment = ({
         setNewComment(!newComment);
       };
 
-  const requestOptions = {body: `${commentBody}`, username: user.username };
-
   useEffect(() => {
     if (startAdding) {
       setIsLoading(true);
-      PostNewComment(article_id, requestOptions)
+      PostNewComment(article_id, {body: `${commentBody}`, username: user.username })
         .then((result) => {
           setOptimisticComment(result.newComment)
           setIsLoading(false)
