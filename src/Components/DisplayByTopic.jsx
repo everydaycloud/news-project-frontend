@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import ArticleCard from "../HomeArticleCard"
-import { FetchArticlesByTopic } from "../../api"
+import ArticleCard from "./HomeArticleCard"
+import { FetchArticlesByTopic } from "../api"
 import { useParams } from 'react-router-dom';
 
 

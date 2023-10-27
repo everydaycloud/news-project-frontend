@@ -6,7 +6,7 @@ import Nav from './Components/Nav'
 import ArticleById from './Components/ArticleById';
 import UserProfile from './Components/UserLogin';
 import ArticlesByTopic from './Components/ArticlesByTopic';
-import DisplayByTopic from "./Components/ArticlesByTopic/DisplayByTopic";
+import DisplayByTopic from "./Components/DisplayByTopic";
 import BadPath from "./Components/404";
 
 

@@ -26,7 +26,9 @@ import ArticlesByTopic from "./ArticlesByTopic";
 
     return (
         <>
+        <section className="articles-list">
             <p>{error}</p>
+            <h2>All Articles</h2>
             <ArticlesByTopic/>
             <ul>
             {allArticles.map((article) => {
@@ -34,6 +36,7 @@ import ArticlesByTopic from "./ArticlesByTopic";
                 </li>
 })}
             </ul>
+        </section>
         </>
     );
 }

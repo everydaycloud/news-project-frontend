@@ -70,12 +70,16 @@ if (votes === null) return <p>Votes can't be loaded</p>
 
     return (
     <>
-    <p>{error}</p>
-    <p>{votes} votes</p> 
+    <section className='article-details'>
+        <p >{error}</p>
+        <p >🗳️ {votes} votes</p> 
+    </section>
     { user ? (
         <>
-    <button onClick={handleClickUp} aria-label="upvote-button">❤️</button>
-    <button onClick={handleClickDown} aria-label="downvote-button">👎</button>
+    <section className="voting-buttons">
+        <button className="voting-button" onClick={handleClickUp} aria-label="upvote-button">❤️</button>
+        <button className="voting-button" onClick={handleClickDown} aria-label="downvote-button">👎</button>
+    </section>
     </>
     ): (
         <p>Log in to vote</p>
