@@ -61,8 +61,8 @@ const AddNewComment = ({
               setCommentBody(event.target.value);
             }}
           />
-          <p>Username {user.username}</p>
-          <button >Add Comment</button>
+          <p id="commenter">Username {user.username}</p>
+          <button id="add-comment-button" >Add Comment</button>
         </form>
         </>
       ) : (

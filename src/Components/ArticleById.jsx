@@ -33,7 +33,7 @@ const ArticleById = () => {
   if (!error && article === null) return <p>Article not found</p>
   return (
     <>
-    <section>
+    <section className='single-article'>
       <SingleArtCard article={article}/>
       <h3>Comments</h3>
       <CommentsByArticleId article_id={article_id}/>

@@ -30,7 +30,7 @@ const CommentCard = ({ comments, setChangeComment }) => {
     {user ?(
     <ul>
       {comments.map((comment) => (
-        <li key={comment.comment_id}>
+        <li className="single-comment" key={comment.comment_id}>
           <p>{comment.body}</p>
           <p>By {comment.author}</p>
           <p>Votes {comment.votes}</p>

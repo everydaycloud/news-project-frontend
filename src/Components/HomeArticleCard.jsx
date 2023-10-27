@@ -16,14 +16,16 @@ const ArticleCard = ({ article }) => {
     <>
       <section className="article-card">
         <Link to={`/articles/${article.article_id}`}>
-        <img
+        <img className="art-card-image"
           src={article.article_img_url}
           alt={`${article.topic} related picture`}
         />
-        <h2>{article.title}</h2>
+        <div className='art-title'><h2>{article.title}</h2></div>
+        <section className="short-art-details">
         <p>Author {article.author}</p>
         <p>{fixDateDisplay(article.created_at)}</p>
         <p>{article.comment_count} comments</p>
+        </section>
         </Link>
       </section>
     </>

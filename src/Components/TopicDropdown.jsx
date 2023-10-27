@@ -12,7 +12,7 @@ const handleSelectChange = (e) => {
   if (topics.length === 0) return <></>
   return (
     <>
-    <section>
+    <section className='dropdown'>
       <label htmlFor="dropdown">Choose a topic </label>
       <select id="dropdown" value={chosenTopic} onChange={handleSelectChange}>
         <option value="">Select from dropdown</option>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { GetAllTopics } from '../api'
-import TopicDropdown from "./ArticlesByTopic/TopicDropdown"
-import DisplayByTopic from "./ArticlesByTopic/DisplayByTopic"
+import TopicDropdown from "./TopicDropdown"
+import DisplayByTopic from "./DisplayByTopic"
 
 
 const ArticlesByTopic = () => {
@@ -25,9 +25,11 @@ const ArticlesByTopic = () => {
     if (topics.length === 0) return <p>Searching by topic is not available right now</p>;
     return (
         <>
+        <section>
         <p>{error}</p>
         <TopicDropdown topics={topics} setChosenTopic={setChosenTopic} chosenTopic={chosenTopic}/>
         <DisplayByTopic/>
+        </section>
         </>
     )
 }
