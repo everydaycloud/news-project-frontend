@@ -7,6 +7,8 @@ import ArticleById from './Components/ArticleById';
 import UserProfile from './Components/UserLogin';
 import ArticlesByTopic from './Components/ArticlesByTopic';
 import DisplayByTopic from "./Components/ArticlesByTopic/DisplayByTopic";
+import BadPath from "./Components/404";
+
 
 
 function App() {
@@ -19,8 +21,8 @@ function App() {
         <Route path="/articles/:article_id" element={ <ArticleById />} />
         <Route path="/articles/topics/" element={<ArticlesByTopic/>}/>
         <Route path="/articles/topics/:topic" element={<DisplayByTopic/>}/>
-        <Route path="/user/*" element={<UserProfile/>}>
-        </Route>
+        <Route path="/user/*" element={<UserProfile/>}/>
+        <Route path="/*" element={<BadPath/>}></Route>
       </Routes>
      
     </>
@@ -28,5 +30,3 @@ function App() {
 }
 
 export default App
-
-        {/* <Route index element={<MyComments />} /> */}
