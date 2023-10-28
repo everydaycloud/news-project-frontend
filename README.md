@@ -1,8 +1,21 @@
-# React + Vite
+**Welcome to the News App!** 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+It allows you to access articles, sort them by topic and if you’re logged in you can also add comments, delete comments, up or downvote articles.
 
-Currently, two official plugins are available:
+Live version can be accessed here (the free API hosting can be slow on the first load please bear with it) https://prismatic-souffle-1213de.netlify.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The API can be found here (https://newsapp-api-project.onrender.com/api) and here’s the description for the backend section (News API Project). Enjoy!
+
+##Instructions
+* Fork this repository
+* Clone your forked repository
+* Use the command 'npm install' and install dependencies: 
+    *     "axios": "^1.5.1",
+    *     "date-fns": "^2.30.0",
+    *     "date-fns-tz": "^2.0.0",
+    *     "date-format": "^4.0.14",
+    *     "react": "^18.2.0",
+    *     "react-dom": "^18.2.0",
+    *     "react-router-dom": "^6.17.0"
+    *      "vite": "^4.4.5"
+* once these are installed run 'npm run dev’ to display the project locally in your browser
